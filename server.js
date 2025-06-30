@@ -13,6 +13,9 @@ const mongoose = require("mongoose");
 const connectDB = require("./config/dbConnection");
 const PORT = process.env.PORT || 3500;
 
+console.log("ACCESS_TOKEN_SECRET:", process.env.ACCESS_TOKEN_SECRET);
+console.log("REFRESH_TOKEN_SECRET:", process.env.REFRESH_TOKEN_SECRET);
+
 // Connect to DB
 connectDB();
 //custom middleware logger

@@ -1,26 +1,37 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 const verifyJWT = (req, res, next) => {
-    //check for access token in header
-    const authHeader = req.headers.authorization||req.headers.Authorization;
-    if(!authHeader?.startsWith('Bearer ')) {
-        res.status(401).send('Access denied, token missing');
-        return;
+  const authHeader = req.headers.authorization || req.headers.Authorization;
+
+  console.log("🟡 Incoming Auth Header:", authHeader);
+
+  if (!authHeader?.startsWith("Bearer ")) {
+    console.log("❌ Missing token or not Bearer");
+    return res.status(401).send("Access denied, token missing");
+  }
+
+  const accessToken = authHeader.split(" ")[1];
+
+  console.log("🟠 ACCESS_TOKEN_SECRET:", process.env.ACCESS_TOKEN_SECRET);
+  console.log("🟠 Access Token:", accessToken);
+
+  jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+    if (err) {
+      console.log("❌ JWT VERIFY ERROR:", err.message); // ✅ LOG THIS
+      return res.status(403).send("Invalid token");
     }
-    // verify access token
-    console.log(authHeader);
-    const accessToken = authHeader.split(' ')[1]; //get token number from {Bearer <token>}
-    jwt.verify(
-        accessToken, 
-        process.env.ACCESS_TOKEN_SECRET,
-        (err, decoded) => {
-            if(err) {
-                res.status(403).send('Invalid token');
-            }
-            req.user = decoded.userInfo.username; //set usesrname of cur user
-            req.roles = decoded.userInfo.roles; //set roles of cur user
-            next();
-    });
-}
+
+    if (!decoded?.userInfo) {
+      console.log("❌ userInfo missing in token");
+      return res.status(403).send("Invalid token payload");
+    }
+
+    console.log("✅ Token Verified. User:", decoded.userInfo.username);
+
+    req.user = decoded.userInfo.username;
+    req.roles = decoded.userInfo.roles;
+    next();
+  });
+};
 
 module.exports = verifyJWT;
