@@ -8,7 +8,7 @@ Content-Type: application/json
   "password": "123456"
 }
 
-### 🔐 Login to get JWT
+###  Login to get JWT
 POST http://localhost:3500/auth
 Content-Type: application/json
 
