@@ -20,7 +20,7 @@ Content-Type: application/json
 
 ### 🔧 Create a new program
 POST http://localhost:3500/api/dashboard/program
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJ1c2VybmFtZSI6ImVkaXRvcnVzZXIiLCJyb2xlcyI6WyJlZGl0b3IiLG51bGxdfSwiaWF0IjoxNzUxMzAyNzQwLCJleHAiOjE3NTE1NjE5NDB9.16-xFxYn9X6x8fOtNh6eM5Agx9CCXcG5E8gE-iSo970
+Authorization: Bearer []
 Content-Type: application/json
 
 {
