@@ -4,12 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Backend API</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div class="container">
-      <h1>Welcome to the MyServer Backend API</h1>
-      <p>This backend powers a role-based program management platform.</p>
-      <h2>Available API Endpoints:</h2>
+      <h1>Welcome to MyServer Backend API</h1>
+      <p>
+        This backend powers a role-based program management platform. All
+        endpoints are secured and require authentication.
+      </p>
+
+      <h2>Authentication</h2>
+      <ul>
+        <li>
+          <strong>POST /auth/login</strong> – Login with username & password.
+          Returns <em>accessToken</em> and sets <em>refreshToken</em> cookie.
+        </li>
+        <li>
+          <strong>GET /auth/refresh</strong> – Use refresh token cookie to
+          obtain a new access token.
+        </li>
+        <li>
+          <strong>POST /auth/logout</strong> – Logout and clear refresh token.
+        </li>
+      </ul>
+      <p>
+        After login, include the <strong>accessToken</strong> in request
+        headers:
+        <code>Authorization: Bearer &lt;accessToken&gt;</code>
+      </p>
+
+      <h2>Available Dashboard Endpoints</h2>
       <ul>
         <li>
           <strong>GET /dashboard/activists</strong> – List all activists (Admin
@@ -40,7 +65,17 @@
           (Admin/Editor)
         </li>
       </ul>
-      <p>To use these endpoints, you need proper authentication and roles.</p>
+
+      <h2>Notes for Developers</h2>
+      <p>
+        1. All endpoints are protected; only users with correct roles can access
+        them. <br />
+        2. Use JWT access tokens in <code>Authorization</code> header for API
+        requests. <br />
+        3. Refresh token is stored in <em>httpOnly</em> cookie for token
+        renewal. <br />
+        4. Admin, Editor, and User roles are supported.
+      </p>
     </div>
   </body>
 </html>
