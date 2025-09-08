@@ -1,14 +1,101 @@
+/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Body */
 body {
-    font-size: 36px;
-    min-height: 100vh;
-    color: #fff;
-    background-color: #000;
-    display: grid;
-    place-content: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  min-height: 100vh;
+  color: #f0f0f0;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Container for content */
+.container {
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+/* Headings */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #00ffcc;
+  text-shadow: 2px 2px 10px rgba(0, 255, 204, 0.6);
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #ffd166;
+  text-shadow: 1px 1px 6px rgba(255, 209, 102, 0.5);
+}
+
+/* Paragraphs */
+p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #f0f0f0;
+}
+
+/* List of endpoints */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: transform 0.2s, background 0.2s;
+}
+
+li:hover {
+  background: rgba(0, 255, 204, 0.2);
+  transform: translateX(5px);
+}
+
+/* Links inside list (if any) */
+li a {
+  color: #00ffcc;
+  text-decoration: none;
+}
+
+li a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 25px;
+    border-radius: 15px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  li {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
 }

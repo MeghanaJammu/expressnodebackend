@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-    <link rel="stylesheet" href="css/style.css" />
-</head>
-
-<body>
-    <h1>Index</h1>
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Backend API</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to the MyServer Backend API</h1>
+      <p>This backend powers a role-based program management platform.</p>
+      <h2>Available API Endpoints:</h2>
+      <ul>
+        <li>
+          <strong>GET /dashboard/activists</strong> – List all activists (Admin
+          only)
+        </li>
+        <li>
+          <strong>GET /dashboard/activist/:id</strong> – Get an activist by ID
+          (Admin only)
+        </li>
+        <li>
+          <strong>GET /dashboard/program</strong> – Get all programs (Admin
+          only)
+        </li>
+        <li>
+          <strong>POST /dashboard/program</strong> – Enter a new program (Editor
+          only)
+        </li>
+        <li>
+          <strong>GET /dashboard/program/:id</strong> – Get program by ID
+          (Admin/Editor)
+        </li>
+        <li>
+          <strong>PUT /dashboard/program/:id</strong> – Edit program by ID
+          (Admin/Editor)
+        </li>
+        <li>
+          <strong>DELETE /dashboard/program/:id</strong> – Delete program by ID
+          (Admin/Editor)
+        </li>
+      </ul>
+      <p>To use these endpoints, you need proper authentication and roles.</p>
+    </div>
+  </body>
 </html>
