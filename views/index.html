@@ -11,21 +11,27 @@
       <h1>Welcome to MyServer Backend API</h1>
       <p>
         This backend powers a role-based program management platform. All
-        endpoints are secured and require authentication.
+        endpoints (except Auth) are secured and require authentication.
       </p>
 
       <h2>Authentication</h2>
       <ul>
         <li>
-          <strong>POST /auth/login</strong> – Login with username & password.
-          Returns <em>accessToken</em> and sets <em>refreshToken</em> cookie.
+          <strong>POST /register</strong> – Create a new user account. <br /><em
+            >Body: { "user": "name", "pwd": "password" }</em
+          >
         </li>
         <li>
-          <strong>GET /auth/refresh</strong> – Use refresh token cookie to
-          obtain a new access token.
+          <strong>POST /auth</strong> – Login with username & password. Returns
+          <em>accessToken</em> and sets <em>refreshToken</em> cookie.
         </li>
         <li>
-          <strong>POST /auth/logout</strong> – Logout and clear refresh token.
+          <strong>GET /refresh</strong> – Use the secure cookie to obtain a new
+          access token.
+        </li>
+        <li>
+          <strong>GET /logout</strong> – Logout and clear the refresh token
+          cookie.
         </li>
       </ul>
       <p>
@@ -37,39 +43,39 @@
       <h2>Available Dashboard Endpoints</h2>
       <ul>
         <li>
-          <strong>GET /dashboard/activists</strong> – List all activists (Admin
-          only)
-        </li>
-        <li>
-          <strong>GET /dashboard/activist/:id</strong> – Get an activist by ID
+          <strong>GET /api/dashboard/activists</strong> – List all activists
           (Admin only)
         </li>
         <li>
-          <strong>GET /dashboard/program</strong> – Get all programs (Admin
+          <strong>GET /api/dashboard/activist/:id</strong> – Get an activist by
+          ID (Admin only)
+        </li>
+        <li>
+          <strong>GET /api/dashboard/program</strong> – Get all programs (Admin
           only)
         </li>
         <li>
-          <strong>POST /dashboard/program</strong> – Enter a new program (Editor
-          only)
+          <strong>POST /api/dashboard/program</strong> – Enter a new program
+          (Editor only)
         </li>
         <li>
-          <strong>GET /dashboard/program/:id</strong> – Get program by ID
+          <strong>GET /api/dashboard/program/:id</strong> – Get program by ID
           (Admin/Editor)
         </li>
         <li>
-          <strong>PUT /dashboard/program/:id</strong> – Edit program by ID
+          <strong>PUT /api/dashboard/program/:id</strong> – Edit program by ID
           (Admin/Editor)
         </li>
         <li>
-          <strong>DELETE /dashboard/program/:id</strong> – Delete program by ID
-          (Admin/Editor)
+          <strong>DELETE /api/dashboard/program/:id</strong> – Delete program by
+          ID (Admin/Editor)
         </li>
       </ul>
 
       <h2>Notes for Developers</h2>
       <p>
-        1. All endpoints are protected; only users with correct roles can access
-        them. <br />
+        1. All dashboard endpoints are protected; only users with correct roles
+        can access them. <br />
         2. Use JWT access tokens in <code>Authorization</code> header for API
         requests. <br />
         3. Refresh token is stored in <em>httpOnly</em> cookie for token
